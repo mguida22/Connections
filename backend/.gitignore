@@ -1,2 +1,7 @@
 venv/
 generated_codes/*.png
+.env
+venv/
+__pycache__/
+config.json
+.DS_Store

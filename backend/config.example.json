@@ -1,0 +1,5 @@
+{
+    "debug": false,
+    "base_image_dir": "base_images",
+    "tmp_dir": "generated_codes"
+}
