@@ -3013,6 +3013,10 @@ react-native:
     xmldoc "^0.4.0"
     yargs "^6.4.0"
 
+react-native-camera@1.0.0-alpha1:
+  version "1.0.0-alpha1"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-1.0.0-alpha1.tgz#a72d5dcfdca099cca8ab3f27f62906ba462e748e"
+
 react-native-elements:
   version "0.9.2"
   resolved "https://registry.yarnpkg.com/react-native-elements/-/react-native-elements-0.9.2.tgz#fec20c472512304815a1817b54f88a425c91347c"
