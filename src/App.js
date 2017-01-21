@@ -7,6 +7,7 @@ import colors from './config/colors';
 
 import Home from './Home';
 import Profile from './Profile';
+import QR from './QR';
 
 class Connections extends Component {
   constructor() {
@@ -40,6 +41,13 @@ class Connections extends Component {
           renderSelectedIcon={() => <Icon color={colors.primary} name='settings' size={26} />}
           onPress={() => this.changeTab('profile')}>
           <Profile />
+        </Tab>
+        <Tab
+          selected={selectedTab === 'qr'}
+          renderIcon={() => <Icon color={colors.grey2} name='code' size={26} />}
+          renderSelectedIcon={() => <Icon color={colors.primary} name='code' size={26} />}
+          onPress={() => this.changeTab('qr')}>
+          <QR />
         </Tab>
       </Tabs>
     );
