@@ -54,4 +54,4 @@ def four_oh_four(error):
     return "resource not found", 404
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host=config["host"], port=config["port"])
