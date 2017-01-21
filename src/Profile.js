@@ -37,6 +37,7 @@ class ConnectionsRegister extends Component {
 	  dark
 	  type='linkedin'
 	/>
+
       </View>
     );
   }
@@ -76,7 +77,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
     textAlign: 'left',
     marginTop: 40,
-    marginBottom: 50,
+    marginBottom: 55,
     marginLeft: 20,
     marginRight: 20,
     color: '#d13a8f',
