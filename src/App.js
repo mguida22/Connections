@@ -1,46 +1,49 @@
 import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import { Platform } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import { Tabs, Tab } from 'react-native-elements';
+
+import colors from './config/colors';
+
+import Home from './Home';
+import Profile from './Profile';
 
 class Connections extends Component {
+  constructor() {
+    super();
+    this.state = {
+      selectedTab: 'home'
+    };
+    this.changeTab = this.changeTab.bind(this);
+  }
+
+  changeTab(selectedTab) {
+    this.setState({
+      selectedTab
+    });
+  }
+
   render() {
+    const { selectedTab } = this.state;
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
+      <Tabs hidesTabTouch>
+        <Tab
+          selected={selectedTab === 'home'}
+          renderIcon={() => <Icon color={colors.grey2} name='whatshot' size={26} />}
+          renderSelectedIcon={() => <Icon color={colors.primary} name='whatshot' size={26} />}
+          onPress={() => this.changeTab('home')}>
+          <Home />
+        </Tab>
+        <Tab
+          selected={selectedTab === 'profile'}
+          renderIcon={() => <Icon color={colors.grey2} name='settings' size={26} />}
+          renderSelectedIcon={() => <Icon color={colors.primary} name='settings' size={26} />}
+          onPress={() => this.changeTab('profile')}>
+          <Profile />
+        </Tab>
+      </Tabs>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
 
 export default Connections;
