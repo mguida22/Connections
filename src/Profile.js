@@ -3,45 +3,68 @@ import {
   AppRegistry,
   StyleSheet,
   TextInput, 
-  View  } from 'react-native';
+  View,
+  Alert
+} from 'react-native';
+
 import { Text, SocialIcon } from 'react-native-elements';
+
+import simpleAuthClient from 'react-native-simple-auth';
+import secrets from './secrets';
 
 
 class ConnectionsRegister extends Component {
+  onButtonPress() {
+    Alert.alert('Button Pressed!');
+  }
+
   render() {
     return (
-     <View style={styles.register}>
-	        
-     <SocialIcon style={styles.social}
-	  title='Sign in with Twitter'
-	  button
-	  type='twitter'
-	/>
+     <View style={styles.register}>        
+       <SocialIcon style={styles.social}
+    	  title='Sign in with Twitter'
+    	  button
+    	  type='twitter'
+        onPress={this.onButtonPress}
+    	/>
 
-	<SocialIcon style={styles.social}
-	  title='Sign In With Facebook'
-	  button
-	  type='facebook'
-	/>
+    	<SocialIcon style={styles.social}
+    	  title='Sign In With Facebook'
+    	  button
+    	  type='facebook'
+        onPress={this.onButtonPress}
+    	/>
 
-	<SocialIcon style={styles.social}
-	  title='Sign In With Instagram'
-	  button
-	  light
-	  type='instagram'
-	/>
+    	<SocialIcon style={styles.social}
+    	  title='Sign In With Instagram'
+    	  button
+    	  light
+    	  type='instagram'
+        onPress={this.onButtonPress}
+    	/>
 
-	<SocialIcon style={styles.social}
-	  title='Sign In With LinkedIn'
-	  button
-	  dark
-	  type='linkedin'
-	/>
-
-      </View>
+    	<SocialIcon style={styles.social}
+    	  title='Sign In With LinkedIn'
+    	  button
+    	  dark
+    	  type='linkedin'
+        onPress={this.onButtonPress}
+    	/>
+    </View>
     );
   }
 }
+
+
+// simpleAuthClient.authorize('twitter').then((info) => {
+//   let token = info.token;
+//   let name = info.name;
+// }).catch((error) => {
+//   let errorCode = error.code;
+//   let errorDescription = error.description;
+// });
+
+
 
 // Intro component
 class Profile extends Component {
