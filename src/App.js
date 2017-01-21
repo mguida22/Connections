@@ -12,7 +12,7 @@ class Connections extends Component {
   constructor() {
     super();
     this.state = {
-      selectedTab: 'home'
+      selectedTab: 'profile'
     };
     this.changeTab = this.changeTab.bind(this);
   }
