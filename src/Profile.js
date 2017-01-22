@@ -14,20 +14,28 @@ import secrets from './secrets';
 
 
 class ConnectionsRegister extends Component {
-  onButtonPress(service) {
-    if (service === "instagram") {
-    Linking.openURL("https://api.instagram.com/oauth/authorize/?response_type=code&redirect_uri=https://connections.shamdasani.org&client_id="+secrets.instagram.client_id)
-
-  } else if (service === "facebook") {
-
-
-  } else if (service === "twitter") {
-
-  } else { //linkedin 
-      Linking.openURL("https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id="+secrets["linkedin-web"].client_id+"&redirect_uri=https://connections.shamdasani.org&state=DCEeFWf45A53sdfKef424")
+  handleUrl(event) {
+    console.log("---------------" + event.url);
   }
 
-};
+  onButtonPress(service) {
+    Linking.addEventListener('url', this.handleUrl);
+
+    switch(service) {
+      case 'instagram':
+        Linking.openURL("https://api.instagram.com/oauth/authorize/?response_type=code&redirect_uri=https://connections.shamdasani.org&client_id="+secrets.instagram.client_id);
+        break;
+      case 'facebook':
+        break;
+      case 'twitter':
+        break;
+      case 'linkedin':
+        Linking.openURL("https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id="+secrets["linkedin-web"].client_id+"&redirect_uri=https://connections.shamdasani.org&state="+secrets.state);
+        break;
+      default:
+        console.error('unknown service');
+    }
+  }
 
 
   render() {
