@@ -17,7 +17,15 @@ class AuthWebView extends Component {
         queryParams[s[0]] = s[1];
       });
 
-      console.log(queryParams.code);
+      // can't add the service type as a key programatically at the same time
+      // that we initiate the object, so we'll do this the ugly way :)
+      let newState = {
+        social: {}
+      };
+      newState.social[this.props.service] = {
+        access_code: queryParams.code
+      };
+      this.setState(newState);
 
       this.props.navigator.pop()
     }

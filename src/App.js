@@ -13,7 +13,8 @@ class Connections extends Component {
   constructor() {
     super();
     this.state = {
-      selectedTab: 'profile'
+      selectedTab: 'profile',
+      social: {}
     };
     this.changeTab = this.changeTab.bind(this);
   }
