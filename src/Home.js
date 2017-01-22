@@ -34,8 +34,7 @@ class Home extends Component {
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}
           onBarCodeRead={this.onBarCodeRead.bind(this)}
-          barCodeTypes={['qr']}>
-        </Camera>
+           />
         <Text>{this.state.qrData}</Text>
       </View>
     );
