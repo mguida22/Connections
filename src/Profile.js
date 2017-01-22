@@ -1,96 +1,43 @@
 import React, { Component } from 'react';
 import {
-  AppRegistry,
   StyleSheet,
-  TextInput, 
   View,
-  Linking,
-  Alert
+  Navigator
 } from 'react-native';
 
-import { Text, SocialIcon } from 'react-native-elements';
+import { Text } from 'react-native-elements';
 
+import AuthWebView from './AuthWebView';
+import ConnectionsRegister from './ConnectionsRegister';
 import secrets from './secrets';
 
-
-class ConnectionsRegister extends Component {
-  onButtonPress(service) {
-    if (service === "instagram") {
-    Linking.openURL("https://api.instagram.com/oauth/authorize/?response_type=code&redirect_uri=https://connections.shamdasani.org&client_id="+secrets.instagram.client_id)
-
-  } else if (service === "facebook") {
-
-
-  } else if (service === "twitter") {
-
-  } else { //linkedin 
-      Linking.openURL("https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id="+secrets["linkedin-web"].client_id+"&redirect_uri=https://connections.shamdasani.org&state=DCEeFWf45A53sdfKef424")
-  }
-
-};
-
-
-  render() {
-    return (
-     <View style={styles.register}>        
-       <SocialIcon style={styles.social}
-        title='Sign in with Twitter'
-        button
-        type='twitter'
-        onPress={this.onButtonPress.bind(this, 'twitter')}
-      />
-
-      <SocialIcon style={styles.social}
-        title='Sign In With Facebook'
-        button
-        type='facebook'
-        onPress={this.onButtonPress.bind(this, 'facebook')}
-      />
-
-      <SocialIcon style={styles.social}
-        title='Sign In With Instagram'
-        button
-        light
-        type='instagram'
-        onPress={this.onButtonPress.bind(this, 'instagram')}
-      />
-
-      <SocialIcon style={styles.social}
-        title='Sign In With LinkedIn'
-        button
-        dark
-        type='linkedin'
-        onPress={this.onButtonPress}
-      />
-    </View>
-    );
-  }
-}
-
-
-// simpleAuthClient.authorize('twitter').then((info) => {
-//   let token = info.token;
-//   let name = info.name;
-// }).catch((error) => {
-//   let errorCode = error.code;
-//   let errorDescription = error.description;
-// });
-
-
-
-// Intro component
 class Profile extends Component {
+  renderScene(route, navigator) {
+    switch(route.name) {
+      case 'ConnectionsRegister':
+        return <ConnectionsRegister navigator={navigator} {...route.passProps} />
+        break;
+      case 'AuthWebView':
+        return <AuthWebView navigator={navigator} {...route.passProps} />
+        break;
+      default:
+        console.error('unkown route');
+    }
+  }
+
   render() {
     return (
      <View style={styles.view}>
       <Text style={styles.logo}>
-          Connections 
+          Connections
         </Text>
         <Text style={styles.welcome}>
           Connect with anyone on all social media platforms within seconds
         </Text>
-         <ConnectionsRegister />
-
+        <Navigator
+          style={{ flex: 1 }}
+          initialRoute={{ name: 'ConnectionsRegister' }}
+          renderScene={ this.renderScene } />
       </View>
     );
   }
@@ -118,10 +65,6 @@ const styles = StyleSheet.create({
     color: '#d13a8f',
     fontFamily: 'Avenir Next',
 
-  },
-  social: {
-    marginRight:40,
-    marginLeft:40,
   }
 });
 
