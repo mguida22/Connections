@@ -30,7 +30,7 @@ def generateQRcode(msg):
 
     # convert image file to base64 encoding
     with open(qr_name, "rb") as qr_file:
-        encoded_qr = 'data:image/png;base64,{}'.format(base64.b64encode(qr_file.read()))
+        encoded_qr = base64.b64encode(qr_file.read())
 
     # remove our qr code file, now that we have the encoding
     os.remove(qr_name)
