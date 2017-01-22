@@ -1,8 +1,7 @@
 import base64, os, uuid
 
 from MyQR import myqr
-from flask import Flask, json, jsonify, request
-
+from flask import Flask, json, jsonify, request, render_template
 
 with open("config.json") as config:
     config = json.loads(config.read())
@@ -46,8 +45,11 @@ def qr():
         qr_data += "{}:{};".format(s, social[s])
 
     qr_encoding = generateQRcode(qr_data)
-
     return qr_encoding
+
+@app.route('/')
+def index():
+    return render_template('/index.html')
 
 @app.errorhandler(404)
 def four_oh_four(error):
